@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-23T00:44:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Michael Barrows</title><subtitle>A place to share my mistakes (and their solutions) with the the [hello] world!</subtitle><author><name>Michael Barrows</name></author><entry><title type="html">Github Pages + Jekyll + Hydeout</title><link href="http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout.html" rel="alternate" type="text/html" title="Github Pages + Jekyll + Hydeout" /><published>2020-08-23T00:00:00-04:00</published><updated>2020-08-23T00:00:00-04:00</updated><id>http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout</id><content type="html" xml:base="http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout.html">&lt;h2 id=&quot;why&quot;&gt;Why&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-23T14:12:58-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Michael Barrows</title><subtitle>A place to share my mistakes (and their solutions) with the the [hello] world!</subtitle><author><name>Michael Barrows</name></author><entry><title type="html">Github Pages + Jekyll + Hydeout</title><link href="http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout.html" rel="alternate" type="text/html" title="Github Pages + Jekyll + Hydeout" /><published>2020-08-23T00:00:00-04:00</published><updated>2020-08-23T00:00:00-04:00</updated><id>http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout</id><content type="html" xml:base="http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout.html">&lt;h2 id=&quot;why&quot;&gt;Why&lt;/h2&gt;
 
 &lt;p&gt;My previous attempt at a Github Pages website used &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vue.js&lt;/a&gt; to help simplify the construction process. Since the site was mostly meant to serve as a resume website (past project lists, employment history, education, etc.), it was mostly lists of objects. Using Vue.js meant I could construct my lists in JSON format. However, when I wanted to shift gears from a resume website to a blog, I knew that it would take too much time to continue to develop it in Vue.js. Eventually, after some googling, testing, and head-scratching I determined that the best solution is sometimes the simplest. In this case, that means Jekyll.&lt;/p&gt;
 
@@ -44,25 +44,7 @@
   &lt;li&gt;updating the budler dependency to version 2.4.1 in jekyll-theme-hydeout.gemspec with the following line: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spec.add_development_dependency &quot;bundler&quot;, &quot;~&amp;gt; 2.1.4&quot;&lt;/code&gt;. For some reason, I was running into an issue where it expected version 1.* and all I had was version 2.*. While this is clearly a shortcut, it seems to work now so I’m going with it.&lt;/li&gt;
   &lt;li&gt;When testing I need to make sure that I’m in the root folder (/Home/ in this case) before I run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;. Failing to do so will cause your build to fail. The same root folder is the folder that I needed to push to github (not the hydeout folder that is bundled with the repo after cloning).&lt;/li&gt;
   &lt;li&gt;The tagline of the website is hidden in &lt;em&gt;/_includes/sidebar.html&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Turning off commenting with &lt;strong&gt;Disqus&lt;/strong&gt; is done by commenting out the following code in the layout pages (i.e. &lt;em&gt;/_layouts/post.html&lt;/em&gt;) ```
-    &lt;section class=&quot;comments&quot;&gt;
-  &lt;h2&gt;Comments&lt;/h2&gt;
-    
-&lt;p&gt;
-  You are seeing this because your Disqus shortname is not properly set. To
-  configure Disqus, you should edit your &lt;code&gt;_config.yml&lt;/code&gt; to include
-  either a &lt;code&gt;disqus.shortname&lt;/code&gt; variable.
-&lt;/p&gt;
-
-&lt;p&gt;
-  If you do not wish to use Disqus, override the
-  &lt;code&gt;comments.html&lt;/code&gt; partial for this theme.
-&lt;/p&gt;
-
-
-&lt;/section&gt;
-    &lt;p&gt;```&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Turning off commenting with &lt;strong&gt;Disqus&lt;/strong&gt; is done by commenting out the following code in the layout pages (i.e. &lt;em&gt;/_layouts/post.html&lt;/em&gt;) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;% include comments.html %&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;publishing&quot;&gt;Publishing&lt;/h3&gt;

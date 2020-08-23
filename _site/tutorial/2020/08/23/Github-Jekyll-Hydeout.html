@@ -232,25 +232,7 @@
   <li>updating the budler dependency to version 2.4.1 in jekyll-theme-hydeout.gemspec with the following line: <code class="language-plaintext highlighter-rouge">spec.add_development_dependency "bundler", "~&gt; 2.1.4"</code>. For some reason, I was running into an issue where it expected version 1.* and all I had was version 2.*. While this is clearly a shortcut, it seems to work now so I’m going with it.</li>
   <li>When testing I need to make sure that I’m in the root folder (/Home/ in this case) before I run <code class="language-plaintext highlighter-rouge">jekyll serve</code>. Failing to do so will cause your build to fail. The same root folder is the folder that I needed to push to github (not the hydeout folder that is bundled with the repo after cloning).</li>
   <li>The tagline of the website is hidden in <em>/_includes/sidebar.html</em></li>
-  <li>Turning off commenting with <strong>Disqus</strong> is done by commenting out the following code in the layout pages (i.e. <em>/_layouts/post.html</em>) ```
-    <section class="comments">
-  <h2>Comments</h2>
-    
-<p>
-  You are seeing this because your Disqus shortname is not properly set. To
-  configure Disqus, you should edit your <code>_config.yml</code> to include
-  either a <code>disqus.shortname</code> variable.
-</p>
-
-<p>
-  If you do not wish to use Disqus, override the
-  <code>comments.html</code> partial for this theme.
-</p>
-
-
-</section>
-    <p>```</p>
-  </li>
+  <li>Turning off commenting with <strong>Disqus</strong> is done by commenting out the following code in the layout pages (i.e. <em>/_layouts/post.html</em>) <code class="language-plaintext highlighter-rouge">% include comments.html %</code></li>
 </ul>
 
 <h3 id="publishing">Publishing</h3>

@@ -52,7 +52,7 @@ Now for the fun part! After I tested the site to ensure operability, I could sta
 * updating the budler dependency to version 2.4.1 in jekyll-theme-hydeout.gemspec with the following line: ```spec.add_development_dependency "bundler", "~> 2.1.4"```. For some reason, I was running into an issue where it expected version 1.* and all I had was version 2.*. While this is clearly a shortcut, it seems to work now so I'm going with it. 
 * When testing I need to make sure that I'm in the root folder (/Home/ in this case) before I run ```jekyll serve```. Failing to do so will cause your build to fail. The same root folder is the folder that I needed to push to github (not the hydeout folder that is bundled with the repo after cloning). 
 * The tagline of the website is hidden in */_includes/sidebar.html*
-* Turning off commenting with **Disqus** is done by commenting out the following code in the layout pages (i.e. */_layouts/post.html*) ```{% include comments.html %}```
+* Turning off commenting with **Disqus** is done by commenting out the following code in the layout pages (i.e. */_layouts/post.html*) ```% include comments.html %```
 
 
 ### Publishing
