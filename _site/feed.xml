@@ -1,5 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-22T00:01:20-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Michael Barrows</title><subtitle>A place to share my mistakes (and their solutions) with the the [hello] world!</subtitle><author><name>Michael Barrows</name></author><entry><title type="html">Hydeout + Jekyll + Github Pages</title><link href="http://localhost:4000/tutorial/2020/08/20/Hydeout-Jekyll-Github.html" rel="alternate" type="text/html" title="Hydeout + Jekyll + Github Pages" /><published>2020-08-20T00:00:00-04:00</published><updated>2020-08-20T00:00:00-04:00</updated><id>http://localhost:4000/tutorial/2020/08/20/Hydeout-Jekyll-Github</id><content type="html" xml:base="http://localhost:4000/tutorial/2020/08/20/Hydeout-Jekyll-Github.html">&lt;p&gt;Example Content&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-23T00:44:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Michael Barrows</title><subtitle>A place to share my mistakes (and their solutions) with the the [hello] world!</subtitle><author><name>Michael Barrows</name></author><entry><title type="html">Github Pages + Jekyll + Hydeout</title><link href="http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout.html" rel="alternate" type="text/html" title="Github Pages + Jekyll + Hydeout" /><published>2020-08-23T00:00:00-04:00</published><updated>2020-08-23T00:00:00-04:00</updated><id>http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout</id><content type="html" xml:base="http://localhost:4000/tutorial/2020/08/23/Github-Jekyll-Hydeout.html">&lt;h2 id=&quot;why&quot;&gt;Why&lt;/h2&gt;
 
-&lt;h1 id=&quot;example-header&quot;&gt;Example Header&lt;/h1&gt;
+&lt;p&gt;My previous attempt at a Github Pages website used &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vue.js&lt;/a&gt; to help simplify the construction process. Since the site was mostly meant to serve as a resume website (past project lists, employment history, education, etc.), it was mostly lists of objects. Using Vue.js meant I could construct my lists in JSON format. However, when I wanted to shift gears from a resume website to a blog, I knew that it would take too much time to continue to develop it in Vue.js. Eventually, after some googling, testing, and head-scratching I determined that the best solution is sometimes the simplest. In this case, that means Jekyll.&lt;/p&gt;
 
-&lt;p&gt;Example content&lt;/p&gt;</content><author><name>Michael Barrows</name></author><category term="Tutorial" /><category term="web development" /><category term="github" /><category term="jekyll" /><category term="hydeout" /><category term="theme" /><summary type="html">Quick outline for how I created a Github Pages blog using Jekyll and the Hydeout theme.</summary></entry></feed>
+&lt;h2 id=&quot;what&quot;&gt;What&lt;/h2&gt;
+
+&lt;p&gt;For this project I had a couple of objectives:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The website should be publishable on Github Pages&lt;/li&gt;
+  &lt;li&gt;The website should have blogging functionality&lt;/li&gt;
+  &lt;li&gt;The website should be easy to update&lt;/li&gt;
+  &lt;li&gt;Teh website should have a simple and pleasing theme&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In reviewing all of these requirements, I decided that a Jekyll site published to Github Pages would be the appropriate solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;how&quot;&gt;How&lt;/h2&gt;
+
+&lt;p&gt;While it was not immediately aparent how to implement a Jekyll site (despite &lt;a href=&quot;https://www.kiltandcode.com/2020/04/30/how-to-create-a-blog-using-jekyll-and-github-pages-on-windows/&quot;&gt;this very sussinct tutorial&lt;/a&gt;), it can actually be done in relatively few steps assuming you are starting from scratch.&lt;/p&gt;
+
+&lt;h3 id=&quot;preparation&quot;&gt;Preparation&lt;/h3&gt;
+
+&lt;p&gt;While I could feasibly do all of my development work from within Github, I find it better if I can see my changes live. In order to do that, I needed to prepare a few things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download and install &lt;a href=&quot;https://rubyinstaller.org/&quot;&gt;Ruby+DevKit&lt;/a&gt; using the instructions found &lt;a href=&quot;https://www.kiltandcode.com/2020/04/30/how-to-create-a-blog-using-jekyll-and-github-pages-on-windows/#how-to-install-jekyll-on-windows&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find a Jekyll theme that I liked on GitHub. There are many out there (including officially supported GH-pages themes) but I chose &lt;a href=&quot;https://github.com/fongandrew/hydeout&quot;&gt;Hydeout&lt;/a&gt; for this blog. Once i had cloned the repository to my local machine (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone https://www.github.com/[user]/[repo].git&lt;/code&gt;) I could then rename the containing folder to something more appropriate (in my case, change “hydeout” to “home”).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ensure the theme works by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; from within the project directory (./home in this case). After navigating to https://localhost:4000 I could see the theme’s website which means that it works.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;edit&quot;&gt;Edit&lt;/h3&gt;
+
+&lt;p&gt;Now for the fun part! After I tested the site to ensure operability, I could start to make the blog my own. I took this time to change all personal information, remove demo blog posts, and update miscellaneous information. Some of the _config.yml and other settings that were changed and not so obvious (to me) were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;updating the theme to “jekyll-theme-hydeout”&lt;/li&gt;
+  &lt;li&gt;updating the budler dependency to version 2.4.1 in jekyll-theme-hydeout.gemspec with the following line: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spec.add_development_dependency &quot;bundler&quot;, &quot;~&amp;gt; 2.1.4&quot;&lt;/code&gt;. For some reason, I was running into an issue where it expected version 1.* and all I had was version 2.*. While this is clearly a shortcut, it seems to work now so I’m going with it.&lt;/li&gt;
+  &lt;li&gt;When testing I need to make sure that I’m in the root folder (/Home/ in this case) before I run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;. Failing to do so will cause your build to fail. The same root folder is the folder that I needed to push to github (not the hydeout folder that is bundled with the repo after cloning).&lt;/li&gt;
+  &lt;li&gt;The tagline of the website is hidden in &lt;em&gt;/_includes/sidebar.html&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Turning off commenting with &lt;strong&gt;Disqus&lt;/strong&gt; is done by commenting out the following code in the layout pages (i.e. &lt;em&gt;/_layouts/post.html&lt;/em&gt;) ```
+    &lt;section class=&quot;comments&quot;&gt;
+  &lt;h2&gt;Comments&lt;/h2&gt;
+    
+&lt;p&gt;
+  You are seeing this because your Disqus shortname is not properly set. To
+  configure Disqus, you should edit your &lt;code&gt;_config.yml&lt;/code&gt; to include
+  either a &lt;code&gt;disqus.shortname&lt;/code&gt; variable.
+&lt;/p&gt;
+
+&lt;p&gt;
+  If you do not wish to use Disqus, override the
+  &lt;code&gt;comments.html&lt;/code&gt; partial for this theme.
+&lt;/p&gt;
+
+
+&lt;/section&gt;
+    &lt;p&gt;```&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;publishing&quot;&gt;Publishing&lt;/h3&gt;
+
+&lt;p&gt;Moving my site to a public location was fairly straight forward since I’m already familiar with Github Pages. All that was required was to push my home directory (&lt;em&gt;/Home/*&lt;/em&gt;) to my github repo under a gh-pages branch. Then, in the repo settings, make it public and tell Github to publish the gh-pages branch.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final Thoughts&lt;/h2&gt;
+
+&lt;p&gt;While I’m clearly late to the party, I think Jekyll will be a great solution to my current need. I know there is tremendous room for growth and many areas where I can expand my learning (Ruby is chief among them), but I’m very happy with my shiny new blog for now.&lt;/p&gt;</content><author><name>Michael Barrows</name></author><category term="Tutorial" /><category term="web development" /><category term="github" /><category term="jekyll" /><category term="hydeout" /><category term="theme" /><summary type="html">Quick outline for how I created a Github Pages blog using Jekyll and the Hydeout theme.</summary></entry><entry><title type="html">Welcome</title><link href="http://localhost:4000/2020/08/21/Welcome-to-the-Blog.html" rel="alternate" type="text/html" title="Welcome" /><published>2020-08-21T00:00:00-04:00</published><updated>2020-08-21T00:00:00-04:00</updated><id>http://localhost:4000/2020/08/21/Welcome-to-the-Blog</id><content type="html" xml:base="http://localhost:4000/2020/08/21/Welcome-to-the-Blog.html">&lt;p&gt;Until recently, the majority of my personal “content creation” consisted of taking photos (that I would never share), building example projects (that were never fully finished), or learning about technologies (which I have no current use for). However, recently I’ve noticed myself routinely&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;performing installation processes for various devevelopment environmtnes that are either complicated or require significant customization to be usable for me (&lt;a href=&quot;https://pi-hole.net/&quot;&gt;pihole&lt;/a&gt;, &lt;a href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;, &lt;a href=&quot;https://www.r-project.org/&quot;&gt;R&lt;/a&gt;, &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/wsl/install-win10&quot;&gt;Windows Subsystem for Linux&lt;/a&gt; etc.)&lt;/li&gt;
+  &lt;li&gt;troubleshooting asoteric errors, for which it takes me days to find a resolution&lt;/li&gt;
+  &lt;li&gt;discovering unique solutions to problems that I wish to remember for future projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally, I’ve always had a small piece of me that wanted to start a blog. I’ve never wanted anything on a daily, or even weekly cadence - just something that provides good content, allows me to practice my technical writing, and may help or entertain someone. It is because of the converging of these two scenarios that I believe now is a good time to start this blog.&lt;/p&gt;
+
+&lt;p&gt;So, welcome! I hope that you find some of my writings helpful. Should you have any questions while you’re reading or would like to continue the discussion elsewhere, feel free to reach out to me on &lt;a href=&quot;https://github.com/MBarrows20&quot;&gt;Github&lt;/a&gt; or &lt;a href=&quot;https://twitter.com/Michael_Barrows&quot;&gt;Twitter&lt;/a&gt;!&lt;/p&gt;</content><author><name>Michael Barrows</name></author><category term="general" /><summary type="html">Welcome to my blog!</summary></entry></feed>
