@@ -6,8 +6,8 @@ highlighter:      rouge
 title:            'Michael Barrows'
 tagline:          'Blog'
 description:      'A place to share my mistakes (and their solutions) with the the [hello] world!'
-url:              https://fongandrew.github.io
-baseurl:          '/'
+url:              https://mbarrows20.github.io
+baseurl:          '/Home'
                   # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
                   # If you want to move just the blog index pages but keep
@@ -34,3 +34,12 @@ sidebar_home_link:  true
                                 # to enable a separate blog link.
 
 theme: jekyll-theme-hydeout
+
+repo: https://github.com/MBarrows20/Home/tree/gh-pages
+linkedin: https://www.linkedin.com/in/michaelabarrows/
+
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true

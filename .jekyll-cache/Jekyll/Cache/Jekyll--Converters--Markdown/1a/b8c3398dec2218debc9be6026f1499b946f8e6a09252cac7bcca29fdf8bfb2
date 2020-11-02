@@ -1,0 +1,348 @@
+I"�E<blockquote>
+  <p><strong>Disclaimer:</strong>
+The solution below is a work-around and is <strong>not</strong> true Row-Level security and should not be used in it’s place. However, it will present as real RLS to the average end-user and enables additional functionality that I believe is key to a usefull Power BI report. Additionally, this post was written on 2020.11.01 for use in Power BI for Report Server (May 2020). As Power BI is updated every month, take the solution in context of it’s publishing date as future features may invalidate this work-around.</p>
+</blockquote>
+
+<h1 id="navigation">Navigation</h1>
+
+<ol>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#problem-statement">Problem Statement</a></li>
+  <li><a href="#data-structure">Data Structure</a>
+    <ol>
+      <li><a href="#security-table">Security Table</a></li>
+      <li><a href="#sales-hierarchy-dimensions">Sales Hierarchy Dimensions</a></li>
+      <li><a href="#sales-fact-table">Sales Fact Table</a></li>
+    </ol>
+  </li>
+  <li><a href="#row-level-security-roles">Row Level Security Roles</a></li>
+  <li><a href="#visual-filters">Visual Filters</a></li>
+  <li><a href="#put-it-all-together">Put It All Together</a></li>
+  <li><a href="#closing-thoughts">Closing Thoughts</a></li>
+</ol>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Microsoft’s Power BI is remarkable product that aims to be a data storage, ETL, visualization, and machinge learning product all in one. Now, I am no stranger to the Microsoft Stack. I know that there are several distinct products that are very well optimized and feature-rich in the aforementioned areas. But, what Power BI accomplishes is empowering users of varying skill levels to leverage the best parts of these products (i.e. Multi-dimensional Cubes from SSAS, Tabular reports from SSRS, Data Querying from SQL Server, etc.) in a user-friendly package. However, there is one feature that is present in SSAS that, if available in Power BI, could make a huge impact: <strong>dynamic row level security for different dimensions of the data model.</strong> Below is the methodology for how to implement this missing feature and bring Power BI one step closer to the tool to rule them all! 💍🌋</p>
+
+<h1 id="problem-statement">Problem Statement</h1>
+
+<p>Imagine a sales business that has multiple vertical levels to their sales organization (<em>Employee &lt; Team &lt; Group &lt; Country</em>). Each level above employee will have many managers (See image below for an example). Employees and team managers all sell products (generate revenue) while group managers and country managers only manage people (do <strong>NOT</strong> generate revenue) and do not technically belong to any single organizational level below them (ex: Group 1’s manager does not belong to a team). Normally, it is possible to build a report using row-level security (RLS) for an organization structured in this way. However, if we want to allow lower-level employees to see the summarized information for higher-level organizations (ex: Team leaders should be able to see <em>their</em> group’s total sales) while also allowing them to see all employees that they oversee and compare themselves to their peers, this becomes much less intuative.</p>
+
+<p><img src="/assets/img/20201101_SalesHierarchy.png" alt="Example Sales Heirarchy" /></p>
+
+<h1 id="data-structure">Data Structure</h1>
+
+<h2 id="security-table">Security Table</h2>
+<p>Because RLS in Power BI filters the data tables <strong>before any measures or visuals are constructed</strong>, we will only use RLS to filter a special “Security” table (which will be hidden later). This table should have one unique row for each sales organization the employee should have permission to view as well as the employee’s email address, EmployeeID, and Security Level (more on this in a bit). Below is an example security table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>EmployeeID</th>
+      <th>TeamID</th>
+      <th>GroupID</th>
+      <th>CountryID</th>
+      <th>Security Lvl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>e2@example.com</td>
+      <td>0002</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>e3@example.com</td>
+      <td>0003</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>e4@example.com</td>
+      <td>0004</td>
+      <td><em>null</em></td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>e1@example.com</td>
+      <td>0001</td>
+      <td><em>null</em></td>
+      <td><em>null</em></td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Some important things to notice here:</p>
+
+<ul>
+  <li>There is only one entry per person (this is <strong>not</strong> the cartesian product of each employee and their superiors for all four organization levels)</li>
+  <li>Group leaders and country leaders have null values for the organizations below them</li>
+  <li>There are no sales numbers in this table</li>
+</ul>
+
+<h2 id="sales-hierarchy-dimensions">Sales Hierarchy Dimensions</h2>
+
+<p>Because we have structured our security table as we did above, we can use a traditional snowflake schema for our sales organizaion dimensions. This means that we will need three tables structured as follows:</p>
+
+<p><strong>DIM_Team</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>TeamID</th>
+      <th>TeamName</th>
+      <th>GroupID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Team 1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Team 2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Team 3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>DIM_Group</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>GroupID</th>
+      <th>GroupName</th>
+      <th>CountryID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Group 1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Group 2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Group 3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>DIM_Country</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>CountryID</th>
+      <th>CountryName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Country 1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Country 2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Country 3</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sales-fact-table">Sales Fact Table</h2>
+
+<p>There are two ways to structure your fact table. The first way is to have as little organization as possible (i.e. just employeeID, TeamID, and sales amount) and the second is to include the employee’s full organization structure alongside their sales figures (i.e. EmployeeID, TeamID, GroupID, CountryID, and sales amount). While both work, the former is the cleaner approach and thus I will recommend that. An example of a Sales Table would be like so:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>EmployeeID</th>
+      <th>TeamID</th>
+      <th>Sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>003</td>
+      <td>1</td>
+      <td>$100.00</td>
+    </tr>
+    <tr>
+      <td>010</td>
+      <td>1</td>
+      <td>$250.00</td>
+    </tr>
+    <tr>
+      <td>045</td>
+      <td>2</td>
+      <td>$10.00</td>
+    </tr>
+    <tr>
+      <td>004</td>
+      <td>2</td>
+      <td>$100.05</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After your Security, Dimension, and Fact tables are created, you should have a data model that looks like the following:</p>
+
+<p><img src="/assets/img/20201101_DataModel.png" alt="Example Data Moel " /></p>
+
+<h1 id="row-level-security-roles">Row Level Security Roles</h1>
+
+<p>Now that we have our data in the right shape, let’s do the first layer of filtering with RLS. As mentioned previously, this step will only filter the “Security” table. For instance, viewing the report as Employee #4 should only yield the following row in our security table when we are done:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>EmployeeID</th>
+      <th>TeamID</th>
+      <th>GroupID</th>
+      <th>CountryID</th>
+      <th>Security Lvl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>e4@example.com</td>
+      <td>0004</td>
+      <td><em>null</em></td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This can be accomplished by creating a new RLS role and entring a DAX filter like the following for the security table:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[email] = userprincipalname()
+</code></pre></div></div>
+
+<p>This will only show the row in the security table that has the email of the viewer. We will referrence this entry with visual filters (more in the next section) to determine if a data point should be visible or not.</p>
+
+<h1 id="visual-filters">Visual Filters</h1>
+
+<p>🎉Congratulations🎉 for making it this far. Now that you’ve done the hard work of getting your data model in the correct shape, you can now utilize the magic that is dynamic row-level security filters! While I call these <em>visual</em> filters, they can also be applied to pages or entire reports if desired.</p>
+
+<p>In order to make this work, you will need (at least) one measure for each heirarchy levels. In my example, this means four (Employee, Team, Group, Country). These measures should also return predictable values so that you can easily define them in a filter later. I use 1 and 0 (1 = row is visible, 0 = row is hidden) but you can choose what works best for you.</p>
+
+<p>The pseudo code for your filter measures should be something like the following. The calculations will be done for each row of the <em>current context</em>. This means that if you have a table showing employee numbers, they will be calculated for each employee. If you have a table that is aggregating sales on a group level, then each “row” will be a group.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Determine the Employee ID associated with the row of the sales fact table (if applicable)
+// Determine the Team associated with the row of the sales fact table (if applicable)
+// Determine the Group associated with the row of the sales fact table (if applicable)
+// Determine the Country associated with the row of the sales fact table (if applicable)
+// Determine the Security level of the employee viewing the report
+
+// Determine if the Employee has the correct security level
+// and
+// if the employee belongs to the sales organization in question (calculated for each row of current scope)
+
+// If both are true, show the row. If at least one is false, hide the row.  
+</code></pre></div></div>
+
+<p>The example below is written for group level permissions:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">GroupIsPermittedForView</span> <span class="o">=</span> 
+<span class="c1">// Store information in variables about the user viewing the report</span>
+<span class="nx">VAR</span> <span class="nx">SecurityLevel</span> <span class="o">=</span> <span class="nx">Max</span><span class="p">(</span><span class="dl">'</span><span class="s1">[N]Security</span><span class="dl">'</span><span class="p">[</span><span class="nx">SecurityLevel</span><span class="p">])</span>
+<span class="nx">VAR</span> <span class="nx">GroupID</span> <span class="o">=</span> <span class="nx">MAX</span><span class="p">(</span><span class="dl">'</span><span class="s1">[N]DIM_Group</span><span class="dl">'</span><span class="p">[</span><span class="nx">GroupID</span><span class="p">])</span>
+<span class="nx">VAR</span> <span class="nx">CountryID</span> <span class="o">=</span> <span class="nx">MAX</span><span class="p">(</span><span class="dl">'</span><span class="s1">[N]DIM_Country</span><span class="dl">'</span><span class="p">[</span><span class="nx">CountryID</span><span class="p">])</span>
+<span class="c1">// Compare viewer's information against the current row's value</span>
+<span class="nx">VAR</span> <span class="nx">SL3</span> <span class="o">=</span> <span class="nx">IF</span><span class="p">(</span><span class="nx">AND</span><span class="p">(</span><span class="nx">SecurityLevel</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">CONTAINS</span><span class="p">(</span><span class="dl">'</span><span class="s1">[N]Security</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">[N]Security</span><span class="dl">'</span><span class="p">[</span><span class="nx">GroupID</span><span class="p">],</span><span class="nx">GroupID</span><span class="p">)),</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="nx">VAR</span> <span class="nx">SL4</span> <span class="o">=</span> <span class="nx">IF</span><span class="p">(</span><span class="nx">AND</span><span class="p">(</span><span class="nx">SecurityLevel</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">CONTAINS</span><span class="p">(</span><span class="dl">'</span><span class="s1">[N]Security</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">[N]Security</span><span class="dl">'</span><span class="p">[</span><span class="nx">CountryID</span><span class="p">],</span><span class="nx">CountryID</span><span class="p">)),</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">return</span> 
+
+<span class="nx">IF</span><span class="p">((</span> <span class="nx">SL3</span> <span class="o">+</span> <span class="nx">SL4</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Esentially what this is doing is comparing each row of the current scope to the employee’s credentials. If the report/page/visual is displaying group level data, we want to check that the viewer is either</p>
+
+<ol>
+  <li>A group leader or</li>
+  <li>A Country leader that oversees the group in a given row or</li>
+  <li>An Employee/Team Leader that is overseen by the leader of the group in a given row</li>
+</ol>
+
+<p>If any of these conditions is met, then we can show the row.</p>
+
+<p>Now, with the measures created, you can add them as a filter to any visual or table. However, be sure to hide the filter (by clicking the eyeball next to the measure in the filter pane) so that a user cannot circumvent your security. While you’re at it, you can hide the security table from your model so that users don’t even know it exists.</p>
+
+<h1 id="put-it-all-together">Put It All Together</h1>
+
+<p>In this artical we have covered the following requirements for this method of psuedo row level security:</p>
+
+<ul>
+  <li>How to create a security table</li>
+  <li>How to structure your Fact and Dimension tables</li>
+  <li>How to define RLS roles</li>
+  <li>How to build filtering metrics</li>
+  <li>How to apply these filters to a visual</li>
+</ul>
+
+<p>This basic implementation allows for heirarchical data filtering with the added ability to show summary data for higher level data. However, now that we are set up to use measures for filtering, there are many different customizations we can do.  For instance, if we want to filter data based on continuous variables (rank within the company, sales revenue, etc.) rather than categorical variables (team, group, etc.) we can do that. If we want to only filter one visual and not another, you can do that. If you want to use your filter in another measure to alter the results, you can do that. I think you get my point.</p>
+
+<p>If you would like to see how a dashboard looks using the method we described above, feel free to download the example PowerBI file <a href="https://github.com/MBarrows20/Home/tree/gh-pages/assets/powerbi">here</a>. This file compares different means of filtering data. For the purposes of the file I have named the Datasets, Pages, Filters, etc. to reflect the following ways to filter data:</p>
+
+<ul>
+  <li>Traditional RLS: Filtering data using only Power BI’s built-in row level security features</li>
+  <li>New RLS: Filtering data using the methods outlined in this article</li>
+  <li>Hybrid RLS: A method described here which does allow for heirarchical filtering but does not allow for summary data of higher level sales organizations</li>
+</ul>
+
+<p>As a suggested example, try viewing the report as “example3@example.com” and as a “Traditional RLS - Group 10 Leader”.</p>
+
+<h1 id="closing-thoughts">Closing Thoughts</h1>
+
+<p>I want to conclude by reinforcing that this method is <strong>not</strong> a true version of row level security as all rows are still present in the data. However, I feel it provides a great alternative to those looking for a little more flexibility in their reporting.</p>
+
+<p>That said, if you have any comments, questions, or concerns - please reach out to me on LinkedIn or GitHub and I’d love to hear them! I’m excited about this stuff and would love to hear from like-minded individuals!</p>
+
+<p>Until next time! 🙋‍♂️📈</p>
+:ET
