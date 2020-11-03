@@ -22,7 +22,6 @@ while (length(successfulMatch) != nrow(participants)) {
   successfulMatch <- vector(mode="character")
   
   for (i in 1:nrow(participants)){
-    participants[i,2]
     availableMatches <- 
       participants %>%
       filter(family != participants[i,2]) %>%
@@ -35,5 +34,3 @@ while (length(successfulMatch) != nrow(participants)) {
 
 #### Print Results ####
 print(cbind(participants,recipient = successfulMatch))
-
- 

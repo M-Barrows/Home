@@ -1,7 +1,7 @@
 ---
 title: How To Create a Random Pairing Generator For Your Secret Holiday Gift Exchange
 layout: post
-date: '2020-11-02'
+date: '2020-11-03'
 excerpt: "How to create a script that will randomly pair individuals for gift giving this holiday season"
 excerpt_separator:  <!--more-->
 tags: 
