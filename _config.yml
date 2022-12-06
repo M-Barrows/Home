@@ -33,7 +33,7 @@ sidebar_home_link:  true
                                 # set this to the root of the paginate_path
                                 # to enable a separate blog link.
 
-theme: jekyll-theme-hydeout
+remote_theme: fongandrew/hydeout
 
 repo: https://github.com/MBarrows20/Home/tree/gh-pages
 linkedin: https://www.linkedin.com/in/michaelabarrows/
