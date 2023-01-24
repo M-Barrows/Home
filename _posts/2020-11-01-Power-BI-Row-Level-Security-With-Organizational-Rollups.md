@@ -185,7 +185,7 @@ In this artical we have covered the following requirements for this method of ps
 
 This basic implementation allows for heirarchical data filtering with the added ability to show summary data for higher level data. However, now that we are set up to use measures for filtering, there are many different customizations we can do.  For instance, if we want to filter data based on continuous variables (rank within the company, sales revenue, etc.) rather than categorical variables (team, group, etc.) we can do that. If we want to only filter one visual and not another, you can do that. If you want to use your filter in another measure to alter the results, you can do that. I think you get my point. 
 
-If you would like to see how a dashboard looks using the method we described above, feel free to download the example PowerBI file [here](https://github.com/MBarrows20/Home/tree/gh-pages/assets/powerbi). This file compares different means of filtering data. For the purposes of the file I have named the Datasets, Pages, Filters, etc. to reflect the following ways to filter data: 
+If you would like to see how a dashboard looks using the method we described above, feel free to download the example PowerBI file [here](https://github.com/M-Barrows/Home/tree/gh-pages/assets/powerbi). This file compares different means of filtering data. For the purposes of the file I have named the Datasets, Pages, Filters, etc. to reflect the following ways to filter data: 
 
 * Traditional RLS: Filtering data using only Power BI's built-in row level security features
 * New RLS: Filtering data using the methods outlined in this article

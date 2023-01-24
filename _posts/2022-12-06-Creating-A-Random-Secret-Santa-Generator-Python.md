@@ -14,19 +14,19 @@ categories:
     - Tutorial
 ---
 
-A couple of years ago I [created a gift exchange randomizer in R](https://mbarrows20.github.io/Home/tutorial/2020/11/03/Creating-A-Random-Secret-Santa-Generator.html). Check out that article if you want more background on the goal and methods behind this tool. However, since it's been a couple of years and I'm now writing the majority of my work in Python, I thought it might be a good time for a refreshed attempt. 
+A couple of years ago I [created a gift exchange randomizer in R](https://M-Barrows.github.io/Home/tutorial/2020/11/03/Creating-A-Random-Secret-Santa-Generator.html). Check out that article if you want more background on the goal and methods behind this tool. However, since it's been a couple of years and I'm now writing the majority of my work in Python, I thought it might be a good time for a refreshed attempt. 
 
 My goal with this version was to keep it as close to stock Python as possible to make it as portable as possible for anyone stumbling across this post. After I was finished I was shocked that the Python version was over twice as long and subjectively far less readable than the R version. That said, I don't think this python version is horrendous. If I was willing to use external libraries I could likely increase the readability. Conversely, if I were to sacrifice readability and logging, I could likely trim a lot of the extra code from this version. 
 
 All said and done - this is a fun little exercise and maybe next year I'll tackle it in a new language. 
 
-You can find the code below or [here](https://gist.github.com/MBarrows20/f8357a7e88b5ac1d286964b0485713f4) on my GitHub.
+You can find the code below or [here](https://gist.github.com/M-Barrows/f8357a7e88b5ac1d286964b0485713f4) on my GitHub.
 
 Happy gifting and until next time! 🙋‍♂️📈
 
 
 
-[GitHub](https://github.com/MBarrows20) | [Mastodon](https://hachyderm.io/@CodeAndCoffee) | [LinkedIn](www.linkedin.com/in/michaelabarrows)
+[GitHub](https://github.com/M-Barrows) | [Mastodon](https://hachyderm.io/@CodeAndCoffee) | [LinkedIn](www.linkedin.com/in/michaelabarrows)
 
 
 ``` python
@@ -122,7 +122,7 @@ def print_pairings(output:dict) -> None:
     for pairing in pairings:
         print(f'{" gives to ".join(pairing)}')
     print('\n🎁 Happy Gifting! 🎁')
-    print('Tool developed with ❤ by https://github.com/MBarrows20')
+    print('Tool developed with ❤ by https://github.com/M-Barrows')
 
 if __name__ == '__main__': 
     output = assign_pairings(example_input)

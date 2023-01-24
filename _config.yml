@@ -6,7 +6,7 @@ highlighter:      rouge
 title:            'Michael Barrows'
 tagline:          'Blog'
 description:      'A place to share my mistakes (and their solutions) with the the [hello] world!'
-url:              https://mbarrows20.github.io
+url:              https://M-Barrows.github.io
 baseurl:          '/Home'
                   # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
@@ -35,7 +35,7 @@ sidebar_home_link:  true
 
 remote_theme: fongandrew/hydeout
 
-repo: https://github.com/MBarrows20/Home/tree/gh-pages
+repo: https://github.com/M-Barrows/Home/tree/gh-pages
 linkedin: https://www.linkedin.com/in/michaelabarrows/
 twitter: https://twitter.com/Michael_Barrows
 

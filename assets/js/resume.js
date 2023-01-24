@@ -19,7 +19,7 @@ const app = new Vue({
         },
         "socials": [{
                 "name": "GitHub",
-                "link": "https://github.com/MBarrows20",
+                "link": "https://github.com/M-Barrows",
                 "icon": "fab fa-github"
             },
             {
@@ -133,7 +133,7 @@ const app = new Vue({
                     "description": "Project designed to help visualize the Collatz Conjecture according to user defined settings.",
                     "show": true,
                     "image": "./images/CollatzExplorerIcon.png",
-                    "github": "https://github.com/MBarrows20/CollatzExplorer",
+                    "github": "https://github.com/M-Barrows/CollatzExplorer",
                     "demo": "https://mbarrows.shinyapps.io/CollatzExplorer/",
                     "showTags": false,
                     "tags": [
@@ -149,8 +149,8 @@ const app = new Vue({
                     "description": "Explore various characteristics about San Francisco's bike share program. This was a final project for my Data Wrangling with R course at the University of Cincinnati.",
                     "show": true,
                     "image": "./images/SafePedalsIcon.png",
-                    "github": "https://github.com/MBarrows20/SFBikes",
-                    "demo": "https://mbarrows20.github.io/SFBikes/",
+                    "github": "https://github.com/M-Barrows/SFBikes",
+                    "demo": "https://M-Barrows.github.io/SFBikes/",
                     "showTags": false,
                     "tags": [
                         "Dashboard",
@@ -167,7 +167,7 @@ const app = new Vue({
                     "description": "Custom dark CSS theme for the common PiHole ad blocker",
                     "show": true,
                     "image": "./images/PiHoleIcon.png",
-                    "github": "https://github.com/MBarrows20/pi-hole-material-dark",
+                    "github": "https://github.com/M-Barrows/pi-hole-material-dark",
                     "demo": "#",
                     "showTags": false,
                     "tags": [
@@ -186,8 +186,8 @@ const app = new Vue({
                     "description": "Website designed to suppliment an in-person workshop for getting individuals up and running with R and R Studio.",
                     "show": true,
                     "image": "./images/RIntroductionIcon.png",
-                    "github": "https://github.com/MBarrows20/RIntroduction",
-                    "demo": "https://mbarrows20.github.io/RIntroduction/",
+                    "github": "https://github.com/M-Barrows/RIntroduction",
+                    "demo": "https://M-Barrows.github.io/RIntroduction/",
                     "showTags": false,
                     "tags": [
                         "R Programming",
@@ -202,7 +202,7 @@ const app = new Vue({
                     "description": "Find superheros which have common characteristics or frequently appear in the smae comics. This was a small experiment to teach myself network graphs in R.",
                     "show": true,
                     "image": "./images/SuperSimilaritiesIcon.png",
-                    "github": "https://github.com/MBarrows20/SuperSimilarities",
+                    "github": "https://github.com/M-Barrows/SuperSimilarities",
                     "demo": "https://mbarrows.shinyapps.io/SuperSimilarities/",
                     "showTags": false,
                     "tags": [
@@ -219,7 +219,7 @@ const app = new Vue({
                     "name": "SceneIt",
                     "show": false,
                     "image": "#",
-                    "github": "https://github.com/MBarrows20/SceneIt",
+                    "github": "https://github.com/M-Barrows/SceneIt",
                     "demo": '#',
                     "showTags": false,
                     "tags": [
