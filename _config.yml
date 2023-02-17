@@ -15,7 +15,7 @@ url:              http://blog.codecoffee.org
                   # sidebar_blog_link below.
 
 author:
-  name:           'Michael Barrows'
+  name:           'M-Barrows'
 
 paginate:         5
 # paginate_path:    '/page:num'
@@ -35,7 +35,7 @@ sidebar_home_link:  true
 
 remote_theme: fongandrew/hydeout
 
-repo: https://github.com/M-Barrows/Home/tree/gh-pages
+repo: https://github.com/M-Barrows/
 linkedin: https://www.linkedin.com/in/michaelabarrows/
 mastodon: https://hachyderm.io/@CodeAndCoffee
 
