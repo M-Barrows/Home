@@ -16,4 +16,4 @@ Until recently, the majority of my personal "content creation" consisted of taki
 
 Additionally, I've always had a small piece of me that wanted to start a blog. I've never wanted anything on a daily, or even weekly cadence - just something that provides good content, allows me to practice my technical writing, and may help or entertain someone. It is because of the converging of these two scenarios that I believe now is a good time to start this blog.
 
-So, welcome! I hope that you find some of my writings helpful. Should you have any questions while you're reading or would like to continue the discussion elsewhere, feel free to reach out to me on [Github](https://github.com/M-Barrows) or [Twitter](https://twitter.com/Michael_Barrows)! 
+So, welcome! I hope that you find some of my writings helpful. Should you have any questions while you're reading or would like to continue the discussion elsewhere, feel free to reach out to me on [Github](https://github.com/M-Barrows) or [Mastodon](https://hachyderm.io/@CodeAndCoffee)! 
