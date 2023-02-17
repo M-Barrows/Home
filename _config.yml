@@ -3,7 +3,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            'Michael Barrows'
+title:            'Code And Coffee'
 tagline:          'Blog'
 description:      'A place to share my mistakes (and their solutions) with the the [hello] world!'
 url:              http://blog.codecoffee.org

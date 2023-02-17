@@ -291,6 +291,17 @@ body {
     margin-left: -0.25em;
   }
 }
+#sidebar-pageview-links {
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  max-width: 100%;
+
+  @media (min-width: $large-breakpoint) {
+    justify-content: flex-start;
+    margin-left: -0.25em;
+  }
+}
 
 #sidebar nav > * {
   display: block;
