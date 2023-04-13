@@ -1,12 +1,23 @@
-image: ruby:2.6
+image: ruby:2.7
 
-variables:
-  JEKYLL_ENV: production
-  LC_ALL: C.UTF-8
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
 
 before_script:
   - gem install bundler
   - bundle install
+
+pages:
+  stage: deploy
+  script:
+    - bundle exec jekyll build -d public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "gh-pages"
+  environment: production
 
 test:
   stage: test
@@ -15,18 +26,5 @@ test:
   artifacts:
     paths:
       - test
-  except:
-    variables:
-      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
-# pages:
-#   stage: deploy
-#   script:
-#     - bundle exec jekyll build -d public
-#   artifacts:
-#     paths:
-#       - public
-#   only:
-#     variables:
-#       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-#   environment: production
+  rules:
+    - if: $CI_COMMIT_BRANCH != "gh-pages"
