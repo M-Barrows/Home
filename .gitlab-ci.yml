@@ -7,7 +7,7 @@ workflow:
 before_script:
   - gem install bundler
   - gem install bundler:2.1.4
-  - bundle install
+  - bundle _2.1.4_ install
 
 pages:
   stage: deploy
