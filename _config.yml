@@ -5,7 +5,7 @@ highlighter:      rouge
 # Setup
 title:            'Code And Coffee'
 tagline:          'Blog'
-description:      'A place to share my mistakes (and their solutions) with the the [hello] world!'
+description:      'A place to share my mistakes (and their solutions) with the the {hello} world!'
 url:              http://codecoffee.org
 baseurl:          '/'
                   # the optional subpath of your site, e.g. "/blog"
