@@ -1,4 +1,4 @@
-name: CICD
+name: Deploy to Docker Hub
 
 on:
   push:
@@ -8,16 +8,14 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build the site in the jekyll/builder container
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/jekyll:4 /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
@@ -26,9 +24,8 @@ jobs:
           _site
           Dockerfile
   deploy:
-
+    needs: build
     runs-on: ubuntu-latest
-
     steps:
     - name: Download _site dir
       uses: actions/download-artifact@v3
