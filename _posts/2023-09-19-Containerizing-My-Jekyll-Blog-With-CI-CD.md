@@ -18,6 +18,10 @@ tags:
 categories: 
     - Show And Tell
 ---
+> 📝 Key Ideas
+> * I'm now using GitHub Actions, Docker Hub, Portainer and Watchtower as my CI/CD stack
+> * Containerizing a blog makes it way faster to write and deploy. Containers strike again!
+> * Yes, I would have the same product with GH Pages but doing it this way allows me to learn something! 
 
 Recently I've been diving into the world of building a home lab. As someone who primarily writes application code, it's humbling to be working with hardware, networking, and other infrastructure. While I began my home lab journey hoping to build a perfect little production environment for all of my pet projects - I've quickly pivoted to a more true "_lab_" where I can experiment with new (to me) technology in a stress free place. 
 

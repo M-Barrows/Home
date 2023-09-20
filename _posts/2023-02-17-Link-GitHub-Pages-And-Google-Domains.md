@@ -12,6 +12,9 @@ tags:
 categories: 
     - Tutorial
 ---
+> 📝 Key Ideas
+> * Update: Google Domains is now owned by Squarespace
+> * If you can acquire a domain, you easily make your GitHub pages site look more professional
 
 I've long pined over the idea of owning my own domain, starting a home lab filled with services that I develop, and making them available to the public. Not because I think I can create the next Mastodon, Python, or Docker, but because tinkering with this stuff and sharing my results (even if it's to 0 people) makes me happy.
 
