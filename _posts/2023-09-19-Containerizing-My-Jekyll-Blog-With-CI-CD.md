@@ -16,7 +16,7 @@ tags:
     - Home Lab
 
 categories: 
-    - Show & Tell
+    - Show And Tell
 ---
 
 Recently I've been diving into the world of building a home lab. As someone who primarily writes application code, it's humbling to be working with hardware, networking, and other infrastructure. While I began my home lab journey hoping to build a perfect little production environment for all of my pet projects - I've quickly pivoted to a more true "_lab_" where I can experiment with new (to me) technology in a stress free place. 
