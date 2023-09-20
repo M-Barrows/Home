@@ -5,11 +5,11 @@ date: '2020-08-23'
 excerpt: "Quick outline for how I created a Github Pages blog using Jekyll and the Hydeout theme."
 excerpt_separator:  <!--more-->
 tags: 
-    - web development
-    - github
-    - jekyll
-    - hydeout
-    - theme
+    - Web Development
+    - GitHub
+    - Jekyll
+    - Hydeout
+    - Theme
 
 categories: 
     - Tutorial
