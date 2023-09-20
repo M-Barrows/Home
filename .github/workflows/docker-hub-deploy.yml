@@ -10,19 +10,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future --incremental --trace"
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: codecoffee_site
-        path: |
-          _site
-          Dockerfile
+      - name: Build
+        uses: actions/jekyll-build-pages@v1
+        with:
+          destination: "./_site"
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: codecoffee_site
+          path: |
+            _site
+            Dockerfile
   deploy:
     needs: build
     runs-on: ubuntu-latest
