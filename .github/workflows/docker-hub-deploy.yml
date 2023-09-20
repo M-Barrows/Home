@@ -10,11 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            Dockerfile
-          sparse-checkout-cone-mode: false
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Build
         uses: actions/jekyll-build-pages@v1
         with:
