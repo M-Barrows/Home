@@ -1,3 +1,3 @@
 source "https://rubygems.org"
 gemspec
-gem 'bundler', '2.3.25'
+gem 'bundler', '~>2.3.25'
