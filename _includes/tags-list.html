@@ -1,14 +1,16 @@
 <!-- See https://blog.lanyonm.org/articles/2013/11/21/alphabetize-jekyll-page-tags-pure-liquid.html -->
 <!-- With added pipe to handle lack of sort_natural -->
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first | downcase }}|{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+<!-- {% capture site_tags %}{% for tag in site.tags %}{{ tag | first | downcase }}|{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %} -->
 <!-- site_tags: {{ site_tags }} -->
-{% assign tag_words = site_tags | split:',' | sort %}
+<!-- {% assign tag_words = site_tags | split:',' | sort | reverse %} -->
 <!-- tag_words: {{ tag_words }} -->
+{% capture site_tags %}{% for tag in site.tags %}{{ tag[1] | size | prepend:"000000" | slice:-6,6 }}:{{ tag[0] }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tag_words = site_tags | split:"," | sort | reverse %}
 
 <div id="tags-page">
   <div class="tags-list">
     {% for tag_pair in tag_words %}
-    {% assign tag = tag_pair | split:'|' | last %}
+    {% assign tag = tag_pair | split:':' | last %}
     <a href="#{{ tag | slugify }}" class="tag-link">
       <span class="tag-name">{{ tag }}</span>
       <span class="tag-count">{{ site.tags[tag] | size }}</span>
