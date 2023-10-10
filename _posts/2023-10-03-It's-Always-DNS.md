@@ -2,6 +2,7 @@
 title: It's Always DNS
 layout: post
 date: '2023-10-03'
+hidden: true
 excerpt: "I configured Pi-hole on Portainer using Macvlan. Here's what I did wrong so you don't make the same mistakes."
 excerpt_separator:  <!--more-->
 tags: 
