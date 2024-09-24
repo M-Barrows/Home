@@ -13,18 +13,23 @@
 </head>
 
 <body>
-        <div class="content column sidebar is-3 navbar is-fixed-top p-0">
+        <div class="content column sidebar navbar is-fixed-top p-0 is-hidden-mobile
+            is-2-fullhd is-3-desktop is-4-tablet">
             {% include 'sidebar.html'%}
         </div>
 
     <div class="columns">
-        <div class="column is-7 is-offset-4 content my-4 ">
+        <div class="column is-7-desktop is-6-tablet content my-4 
+                            is-offset-4-desktop is-offset-5-tablet ">
             {% block content%}
             {% endblock %}
         </div>
     </div>
     
-        <div class="column navbar is-fixed-bottom is-9 is-offset-3 p-0 custom-footer">
+        <div class="column navbar is-fixed-bottom p-0 custom-footer is-hidden-touch
+                    is-10-fullhd  is-offset-2-fullhd
+                    is-9-desktop is-offset-3-desktop 
+                    is-8-tablet is-offset-4-tablet">
             {% include 'footer.html'%}
         </div>
 </body>
