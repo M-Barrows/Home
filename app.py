@@ -27,7 +27,7 @@ def blog_home():
 def tag_search(tag):
     return render_template('tag_search.html',pages=pages, tag=tag, tags=tags, page={'path':f'tags/{tag.lower()}'})
 
-@app.route('/blog/<path:path>/')
+@app.route('/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
     return render_template('page.html', pages=pages, page=page, tags=tags)
