@@ -20,6 +20,7 @@ categories:
     - Show And Tell
 ---
 > 📝 Key Ideas
+>
 > * I'm now using GitHub Actions, Docker Hub, Portainer and Watchtower as my CI/CD stack
 > * Containerizing a blog makes it way faster to write and deploy. Containers strike again!
 > * Yes, I would have the same product with GH Pages but doing it this way allows me to learn something! 

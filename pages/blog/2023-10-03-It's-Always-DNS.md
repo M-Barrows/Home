@@ -17,6 +17,7 @@ categories:
     - Lessons Learned
 ---
 > 📝 Key Ideas
+>
 > * The Macvlan driver makes Docker containers look like standalone devices
 > * Make sure to double check your Docker network configuration before moving this setup to production
 > * DHCP leases may not expire for a while. Force them to refresh or be ready for random service outages later. 
