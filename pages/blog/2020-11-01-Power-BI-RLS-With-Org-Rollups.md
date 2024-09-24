@@ -20,19 +20,7 @@ categories:
 > The solution below is a work-around and is **not** true Row-Level security and should not be used in it's place. However, it will present as real RLS to the average end-user and enables additional functionality that I believe is key to a usefull Power BI report. Additionally, this post was written on 2020.11.01 for use in Power BI for Report Server (May 2020). As Power BI is updated every month, take the solution in context of it's publishing date as future features may invalidate this work-around.
 
 
-# Navigation
-
-1. [Introduction](#introduction)
-2. [Problem Statement](#problem-statement)
-3. [Data Structure](#data-structure)
-    1. [Security Table](#security-table)
-    2. [Sales Hierarchy Dimensions](#sales-hierarchy-dimensions)
-    3. [Sales Fact Table](#sales-fact-table)
-4. [Row Level Security Roles](#row-level-security-roles)
-5. [Visual Filters](#visual-filters)
-6. [Put It All Together](#put-it-all-together)
-7. [Closing Thoughts](#closing-thoughts)
-
+[TOC]
 
 # Introduction
 
