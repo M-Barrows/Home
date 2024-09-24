@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{{ pages.get('index').meta.title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='highlight/styles/night-owl.min.css')}}">
+    <script src="{{ url_for('static', filename='highlight/highlight.min.js')}}"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url_for('static',filename='favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" />
+</head>
+
+<body>
+        <div class="content column sidebar is-3 navbar is-fixed-top p-0">
+            {% include 'sidebar.html'%}
+        </div>
+
+    <div class="columns">
+        <div class="column is-7 is-offset-4 content my-4 ">
+            {% block content%}
+            {% endblock %}
+        </div>
+    </div>
+    
+        <div class="column navbar is-fixed-bottom is-9 is-offset-3 p-0 custom-footer">
+            {% include 'footer.html'%}
+        </div>
+</body>
+
+</html>
