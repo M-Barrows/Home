@@ -24,9 +24,13 @@ jobs:
           registry: "registry.codecoffee.org"
           username: admin 
           password: admin
-      -
-        name: Build and push
+     
+      - name: Get commit SHA
+        id: vars
+        run: echo "::set-output name=commit_sha::$(echo ${GITHUB_SHA} | cut -c1-7)"
+
+      - name: Build and push
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: registry.codecoffee.org/home:$(date +%s)
+          tags: registry.codecoffee.org/home:${{ steps.vars.outputs.commit_sha }}
