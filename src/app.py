@@ -5,9 +5,15 @@ from pygments.formatters import HtmlFormatter
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from prometheus_flask_exporter import PrometheusMetrics
+from opentelemetry import trace
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+FlaskInstrumentor().instrument_app(app)
+metrics = PrometheusMetrics(app)
+tracer = trace.get_tracer(__name__)
 pages = FlatPages(app)
 tags = set(t for p in pages if (p['tags'] is not None and p['hidden'] is False) for t in p['tags'])
 

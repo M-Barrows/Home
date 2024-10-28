@@ -1,23 +1,8 @@
 # Code And Coffee Blog
 This is the main repo that I use to update my personal blog at [https://codecoffee.org](https://blog.codecoffee.org).
 
-How to build the site
-```bash 
-docker run --rm -it `
-  --volume="${PWD}:/srv/jekyll" `
-  --volume="${PWD}/vendor/bundle:/usr/local/bundle" `
-  -p 4000:4000 jekyll/jekyll:4 `
-  jekyll serve
-```
-How to create/update docker image
+How to run the site 
 ```bash
-docker build -t blog:latest .
+OTEL_RESOURCE_ATTRIBUTES=service.name=codecoffee-home OTEL_EXPORTER_OTLP_ENDPOINT="http://192.168.1.102:4317" OTEL_EXPORTER_OTLP_PROTOCOL=grpc opentelemetry-instrument flask run
 ```
 
-How to publish the docker image
-```bash
-docker tag blog:latest codecoffee/blog:latest
-docker push blog:latest
-```
-
-https://plainenglish.io/blog/how-to-create-custom-nginx-docker-image

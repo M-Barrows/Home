@@ -1,0 +1,15 @@
+Flask-FlatPages
+Flask
+Pygments
+
+Gunicorn
+
+opentelemetry-api==1.22.0
+opentelemetry-sdk
+opentelemetry-distro==0.43b0
+opentelemetry-instrumentation==0.43b0
+opentelemetry-exporter-otlp==1.22.0
+opentelemetry-instrumentation-flask
+opentelemetry-instrumentation-requests
+opentelemetry-instrumentation-logging
+prometheus-flask-exporter

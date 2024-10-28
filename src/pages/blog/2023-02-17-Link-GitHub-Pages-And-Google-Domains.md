@@ -16,7 +16,6 @@ categories:
 > 📝 Key Ideas
 >
 > * __Update: Google Domains is now owned by Squarespace__
->
 > * If you can acquire a domain, you easily make your GitHub pages site look more professional
 
 I've long pined over the idea of owning my own domain, starting a home lab filled with services that I develop, and making them available to the public. Not because I think I can create the next Mastodon, Python, or Docker, but because tinkering with this stuff and sharing my results (even if it's to 0 people) makes me happy.
@@ -53,6 +52,7 @@ Once you've done this head back to your gh-pages site and go to the "pages" sect
 If you get the green light from Github then your website should be published!🥳 Head on over to the shiny new website and take a look! 
 
 A couple additional notes: 
+
 * If you are using absolute links anywhere in your site, you'll want to rewrite them to use your new domain. This isn't usually necessary but it can avoid some headaches in the future.
 * If you're using a custom theme for your page like I was, you might want to re-build your site and re-deploy to Github. I had some odd formatting errors that were fixed after the re-deploy. 
 * This method above does not talk about any security you may want to invoke on your site. I recommend reading up on DNS validation as a next step if that interests you. 
@@ -65,6 +65,7 @@ Until next time! 🙋‍♂️📈
 <hr>
 
 Sources I used to understand this process: 
+
 * [Github docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 * [Medium Article by Steve Jones](https://medium.com/@steve_jones/4-how-to-point-a-domain-on-google-domains-to-github-pages-1d4c24f01382)
 

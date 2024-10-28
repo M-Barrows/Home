@@ -44,6 +44,7 @@ For instance, here are most of my steps needed to update my blog before Docker:
 7. commit changes to Github
 
 However, now my steps look like this:
+
 1. Write new content
 2. Commit changes to Github
 3. Relax

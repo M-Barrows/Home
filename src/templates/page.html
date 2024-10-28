@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+<head>
+    <title>{{ page.meta.title }}</title>
+</head>
+{%block content %}
+
+    <h1>{{ page.meta.title }}</h1>
+    <div>
+        {{ page.html|safe }}
+    </div>
+    <div class="columns">
+        <div class="column is-narrow">
+            <a href="{{ url_for('blog_home') }}"><button class="button is-primary mt-4"><span class="icon-text"><i class="fas fa-home"></i>Home</span></button></a>
+            <a href="#"><button class="button is-primary mt-4"> <span class="icon-text"><i class="fas fa-arrows-up-to-line"></i>Top</span></button></a>
+        </div>
+    </div>
+{%endblock%}
