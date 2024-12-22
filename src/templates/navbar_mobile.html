@@ -1,24 +1,28 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{url_for('index')}}">
-            <span class="is-size-4<"><img src="{{url_for('static',filename='favicon.ico')}}"> Code and Coffee</span>
+            <span class="is-size-2 is-size-4-desktop<"><img src="{{url_for('static',filename='favicon.ico')}}"> Code and Coffee</span>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="basic-navbar">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </a>
     </div>
-    <div id="basic-navbar" class="navbar-menu">
-        <div class="navbar-start">
+    <div id="basic-navbar" class="navbar-menu is-size-4">
+        <div class="navbar-end">
             <a class="navbar-item" href="{{url_for('index')}}">
                 Home
             </a>
             <a class="navbar-item" href="{{url_for('blog_home')}}">
                 Blog
             </a>
+            <a class="navbar-link" href="#">Projects</a>
+            <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item is-size-5-touch" href="https://codecoffee.org/pdfit">📦PDF-It!</a>
+            </div>
+            </a>
         </div>
     </div>
     </div>
-</nav>

@@ -11,23 +11,24 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url_for('static',filename='favicon.ico') }}" />
     <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" />
     <script src="https://kit.fontawesome.com/8c781f34f9.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='libs.js') }}"></script>
 </head>
 
 <body>
     <div class="columns">
-        <div class="content column sidebar navbar is-fixed-top p-0 is-hidden-mobile
-            is-2-fullhd is-3-desktop is-4-tablet">
-            {% include 'sidebar.html'%}
-        </div>
-        <div class="is-hidden-tablet">
+        <div class="navbar pb-3 is-hidden-desktop is-fixed-top">
             {% include 'navbar_mobile.html'%}
+        </div>
+        <div class="content column sidebar navbar is-fixed-top p-0 is-hidden-touch
+            is-2-fullhd is-3-desktop">
+            {% include 'sidebar.html'%}
         </div>
     </div>
     <div class="columns">
-        <div class="column content my-4 pt-6
+        <div class="column content my-6 pt-6
                     is-7-desktop is-offset-4-desktop
-                    is-6-tablet is-offset-5-tablet 
-                    is-8-mobile is-offset-2-mobile">
+                    is-10-touch is-offset-1-touch 
+                    is-size-3-touch">
             {% block content%}
             {% endblock %}
         </div>

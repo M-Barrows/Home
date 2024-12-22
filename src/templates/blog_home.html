@@ -6,9 +6,9 @@
         <div class="column my-3">
             <div class="card">
             <div class="card-content">
-                <a href="{{url_for('page',path=page.path)}}"><p class="title">{{page.meta.title}}</p></a>
-                <p class="subtitle">{{page.meta.date}}</p>
-                <p class="content">{{page.meta.excerpt}}</p>
+                <a href="{{url_for('page',path=page.path)}}"><p class="title is-size-2-touch">{{page.meta.title}}</p></a>
+                <p class="subtitle is-size-4-touch">{{page.meta.date}}</p>
+                <p class="content is-size-3-touch">{{page.meta.excerpt}}</p>
             </div>
             <footer class="card-footer">
                         <a class="button is-link is-full card-footer-item is-ghost" href="{{url_for('page',path=page.path)}}">
