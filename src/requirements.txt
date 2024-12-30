@@ -13,3 +13,5 @@ opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 opentelemetry-instrumentation-logging
 prometheus-flask-exporter
+
+feedgen
