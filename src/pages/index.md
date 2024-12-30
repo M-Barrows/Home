@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Code And Coffee
 date: '2024-08-30'
 hidden: true
 tags: 

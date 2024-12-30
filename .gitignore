@@ -2,3 +2,4 @@ __ARCHIVE__/
 __pycache__/
 */.venv/*
 highlight/
+node_modules/

@@ -3,43 +3,29 @@
 
 <head>
     <title>{{ pages.get('index').meta.title }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='highlight/styles/night-owl.min.css')}}">
     <script src="{{ url_for('static', filename='highlight/highlight.min.js')}}"></script>
     <script>hljs.highlightAll();</script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url_for('static',filename='favicon.ico') }}" />
     <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" />
     <script src="https://kit.fontawesome.com/8c781f34f9.js" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='libs.js') }}"></script>
 </head>
 
 <body>
-    <div class="columns">
-        <div class="navbar pb-3 is-hidden-desktop is-fixed-top">
-            {% include 'navbar_mobile.html'%}
-        </div>
-        <div class="content column sidebar navbar is-fixed-top p-0 is-hidden-touch
-            is-2-fullhd is-3-desktop">
-            {% include 'sidebar.html'%}
-        </div>
+    <div class="sticky top-0 z-50">
+        {% include 'navbar_mobile.html'%}
     </div>
-    <div class="columns">
-        <div class="column content my-6 pt-6
-                    is-7-desktop is-offset-4-desktop
-                    is-10-touch is-offset-1-touch 
-                    is-size-3-touch">
-            {% block content%}
-            {% endblock %}
-        </div>
+    <div class="content mx-auto mt-5 mb-40">
+        {% block content%}
+        {% endblock %}
     </div>
 
-    <div class="column navbar is-fixed-bottom p-0 custom-footer is-hidden-touch
-                    is-10-fullhd  is-offset-2-fullhd
-                    is-9-desktop is-offset-3-desktop 
-                    is-8-tablet is-offset-4-tablet">
+    <footer class="fixed bottom-0 inset-x-0">
         {% include 'footer.html'%}
-    </div>
+    </footer>
+    <script src="{{ url_for('static', filename='libs.js') }}"></script>
 </body>
 
 </html>

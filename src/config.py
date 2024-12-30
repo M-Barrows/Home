@@ -12,5 +12,5 @@ FLATPAGES_MARKDOWN_EXTENSIONS = [
     FencedCodeExtension(), 
     CodeHiliteExtension(linenums=False, guess_lang=False),
     TableExtension(),
-    TocExtension(anchorlink=True,title="In This Article",title_class="is-size-3"),
+    TocExtension(anchorlink=True,title="In This Article",title_class="text-2xl font-extrabold", toc_class="px-10"),
     SaneListExtension()]

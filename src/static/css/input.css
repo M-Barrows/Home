@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-slate-800
+    }
+    h1 {
+        @apply text-4xl text-yellow-400 my-4
+    }
+    h2 {
+        @apply text-3xl text-yellow-300 italic my-2
+    }
+    h3 {
+        @apply text-2xl font-bold
+    }
+    p, li, ul, span, td, blockquote{
+        @apply text-zinc-300
+    }
+    table {
+        @apply m-6 md:table-fixed
+    }
+    tr {
+        @apply py-2
+    }
+    th {
+        @apply text-cyan-100
+    }
+    td, th{
+        @apply px-2
+    }
+    img, pre {
+        @apply py-4
+    }
+    blockquote {
+        @apply border-l-slate-400 border-l-4 pl-4 my-2
+    }
+    strong, code {
+        @apply text-zinc-50
+    }
+    ul > li {
+        @apply list-disc ml-8 pl-2 py-1
+    }
+    ol > li {
+        @apply list-decimal ml-8 pl-2 py-1
+    }
+    ol, ul {
+        @apply py-2
+    }
+    p {
+        @apply py-2 leading-loose
+    }
+    code {
+        @apply bg-slate-900 px-2 py-1
+    }
+    li > a {
+        @apply underline
+    }
+}
