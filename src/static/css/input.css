@@ -7,7 +7,7 @@
         @apply bg-slate-800
     }
     h1 {
-        @apply text-4xl text-yellow-400 my-4
+        @apply text-4xl text-yellow-500 my-4
     }
     h2 {
         @apply text-3xl text-yellow-300 italic my-2

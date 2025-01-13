@@ -2,7 +2,8 @@
 title: It's Always DNS
 layout: post
 date: '2023-10-03'
-hidden: true
+updated: '2025-01-13'
+hidden: false
 excerpt: "I configured Pi-hole on Portainer using Macvlan. Here's what I did wrong so you don't make the same mistakes."
 excerpt_separator:  <!--more-->
 tags: 
@@ -21,6 +22,8 @@ categories:
 > * The Macvlan driver makes Docker containers look like standalone devices
 > * Make sure to double check your Docker network configuration before moving this setup to production
 > * DHCP leases may not expire for a while. Force them to refresh or be ready for random service outages later. 
+
+> Update 2025-01-13: I've since started using Bind9 for DNS rather than Pi-hole. While Pi-hole is great, I just wanted to try out a new product. I may publish a write-up of my current network setup sometime in the future.
 
 ## Why I Love Pi-hole 
 

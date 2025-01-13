@@ -1,13 +1,15 @@
-FROM python:3.10-slim
-
+# FROM python:3.10-slim
+FROM node:20-slim
 # Install curl 
 RUN apt-get update && \ 
-    apt-get install -y curl unzip && \ 
+    apt-get install -y curl unzip python3=3.11.* python3-venv && \ 
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install python dependencies
 COPY ./src/requirements.txt /
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN python3 -m venv /opt/.venv && \
+    /opt/.venv/bin/pip install --no-cache-dir -r requirements.txt
 
 COPY ./src /app
 WORKDIR /app
@@ -27,6 +29,8 @@ RUN unzip /tmp/highlightjs/highlightjs.zip -d ./static/highlight
 # Remove temp directory
 RUN rm -rf /tmp/highlightjs
 
+RUN npm install tailwindcss && npm run create-css
+
 ENV OTEL_RESOURCE_ATTRIBUTES=service.name=codecoffee-home 
 ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://192.168.1.102:4317" 
 ENV OTEL_EXPORTER_OTLP_PROTOCOL=grpc 
@@ -34,4 +38,4 @@ ENV OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 ENV OTEL_LOGS_EXPORTER=otlp
 EXPOSE 8000
 
-CMD ["opentelemetry-instrument", "gunicorn", "--config", "gunicorn.config.py", "app:app"]
+CMD ["/bin/bash", "-c", "source /opt/.venv/bin/activate && opentelemetry-instrument gunicorn --config gunicorn.config.py app:app"]

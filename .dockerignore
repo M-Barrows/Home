@@ -1,0 +1,5 @@
+src/static/highlight/*
+src/static/css/main.css
+.venv/*
+.gitea/
+node_modules/

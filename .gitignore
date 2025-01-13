@@ -1,5 +1,7 @@
 __ARCHIVE__/
 __pycache__/
-*/.venv/*
+.venv/*
 highlight/
 node_modules/
+src/static/css/main.css
+src/static/feed.xml

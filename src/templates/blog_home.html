@@ -3,10 +3,10 @@
 {% block content %}
 
 <!-- inspired by tailwindcss.com -->
-<ul class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+<ul class="grid grid-cols-1 gap-y-10 gap-x-6 items-start p-8 mx-auto max-w-6xl">
     {% for page in pages | sort(attribute='date', reverse=true) | selectattr("hidden", "ne", true) %}
     <li class="ml-0 pl-0 relative flex flex-row items-start">
-        <div class="order-1 grow sm:ml-6 xl:ml-0 bg-slate-700 p-4 rounded-lg">
+        <div class="order-1 grow sm:mx-4 xl:ml-0 bg-slate-700 p-4 rounded-lg">
             <h3 class="mb-1 text-slate-100 font-semibold">
             {{page.meta.title}}<span class="my-1 block text-sm leading-6 text-yellow-400">{{page.meta.date}}</span>
             </h3>
