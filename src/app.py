@@ -60,6 +60,10 @@ def index():
 def blog_home():
     return render_template('blog_home.html',pages=pages, tags=tags, page={'path':'blog'})
 
+@app.route('/blog/tags')
+def tag_list():
+    return render_template('tags.html',pages=pages, tags=tags)
+
 @app.route('/blog/tag-search/<string:tag>')
 def tag_search(tag):
     return render_template('tag_search.html',pages=pages, tag=tag, tags=tags, page={'path':f'tags/{tag.lower()}'})
