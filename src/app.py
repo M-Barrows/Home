@@ -81,5 +81,9 @@ def pygments_css():
 def feeds():
     return send_from_directory(directory='static',path='feed.xml')
 
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(directory='static',path='robots.txt')
+
 if __name__ == '__main__':
     app.run()

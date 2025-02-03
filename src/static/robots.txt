@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /
+
+User-agent: AhrefsBot
+Allow: /blog/
+
+User-agent: GoogleBot
+Allow: /blog/
+
+User-agent: Google Image Proxy
+Allow: /blog/
+
+User-agent: Uptime-Kuma
+Allow: /
