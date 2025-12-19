@@ -33,6 +33,18 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="{{url_for('index')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
             <a href="{{url_for('blog_home')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
+            <div class="relative">
+              <button id="apps-menu-button" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Apps</button>
+              <div class="hidden absolute z-10 mt-2 w-48 top-full rounded-md bg-slate-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" id="apps-menu">
+                <div class="space-y-1 px-2 pb-3 pt-2">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                  <a href="https://codecoffee.org/apps/401-ok" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">401-ok 👌 </a>
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
         </div>
       </div>
@@ -79,6 +91,17 @@
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <a href="{{url_for('index')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
       <a href="{{url_for('blog_home')}}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
+      <div class="relative">  
+      <button id="mobile-apps-menu-button" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Apps</button>
+          <!-- <div class="absolute z-10 mt-2 top-full rounded-md bg-slate-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" id="apps-menu"> -->
+            <div class="hidden space-y-1 px-4 pb-3 pt-2"id="mobile-apps-menu">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="https://codecoffee.org/apps/401-ok" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">401-ok 👌 </a>
+            <!-- </div> -->
+          </div>
+        </div>
+    </div>
     </div>
   </div>
+  <!-- Mobile menu, show/hide based on menu state. -->
 </nav>
