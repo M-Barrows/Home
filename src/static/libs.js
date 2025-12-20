@@ -4,18 +4,22 @@
 // Profile menu toggle 
   const profileMenuButton = document.querySelector("#user-menu-button")
   const userMenu = document.querySelector("#user-menu")
+// apps menu toggle 
+  const appsMenuButton = document.querySelector("#apps-menu-button")
+  const appsMenu = document.querySelector("#apps-menu")
   
-  mobileMenuButton.addEventListener("click", () => {
+  const mobileAppsMenuButton = document.querySelector("#mobile-apps-menu-button")
+  const mobileAppsMenu = document.querySelector("#mobile-apps-menu")
+  
+mobileMenuButton.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden")
   })
-  // TODO: Enable blur event but also allow clicking into modal for links
-  // mobileMenuButton.addEventListener("blur", () => {
-  //   mobileMenu.classList.add("hidden")
-  // })
   profileMenuButton.addEventListener("click", () => {
     userMenu.classList.toggle("hidden")
   })
-  // TODO: Enable blur event but also allow clicking into modal for links
-  // profileMenuButton.addEventListener("blur", () => {
-  //   userMenu.classList.add("hidden")
-  // })
+  appsMenuButton.addEventListener("click", () => {
+    appsMenu.classList.toggle("hidden")
+  })
+  mobileAppsMenuButton.addEventListener("click", () => {
+    mobileAppsMenu.classList.toggle("hidden")
+  })
